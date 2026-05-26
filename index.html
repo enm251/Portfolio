@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsh Singh | Cybersecurity Portfolio</title>
+    <meta name="description" content="Explore the cybersecurity portfolio of Adarsh Singh, specializing in Web Application Pentesting, OWASP Top 10 audits, and reconnaissance automation tools.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Interactive Canvas Radar Background -->
+    <canvas id="canvas-radar"></canvas>
+
+    <!-- Top Navigation Header -->
+    <header id="site-header">
+        <div class="container nav-container">
+            <a href="#about" class="logo">
+                ADARSH<span>.SEC</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about" class="active" id="nav-about">ABOUT</a></li>
+                    <li><a href="#dashboard" id="nav-dashboard">DASHBOARD</a></li>
+                    <li><a href="#projects" id="nav-projects">PROJECTS</a></li>
+                    <li><a href="#skills" id="nav-skills">SKILLS</a></li>
+                    <li><a href="#journey" id="nav-journey">JOURNEY</a></li>
+                    <li><a href="#contact" id="nav-contact">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-controls">
+                <div class="secure-badge" id="connection-status">
+                    <span class="pulse-ring"></span>
+                    <span class="badge-dot"></span>
+                    <span>SECURE_CONNECTION: ESTABLISHED</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Terminal Section -->
+    <section class="hero-section" id="about">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="motto-tag">
+                    <span class="warning-light"></span>
+                    &gt;_ INITIALIZING SECURE SHELL CONNECTION...
+                </div>
+                <h1 class="hero-title">Adarsh Singh</h1>
+                <h2 class="hero-subtitle">Security Engineer</h2>
+                <p class="hero-bio">
+                    B.Tech Computer Science student and cybersecurity researcher. Passionate about web vulnerability assessments, OWASP Top 10 exploits, and reconnaissance automation. Top 5% ranker on TryHackMe, dedicated to discovering insecure coding patterns and building automation systems.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">ESTABLISH HANDSHAKE</a>
+                    <a href="#projects" class="btn btn-secondary">AUTHORIZED WORKS</a>
+                </div>
+            </div>
+
+            <!-- Custom Security Terminal Emulator -->
+            <div class="cyber-terminal" id="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="terminal-title">bash - adarsh@security-node:~</div>
+                    <div class="terminal-mode">guest@node-01</div>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-output" id="terminal-output">
+                        <div class="welcome-text">
+===================================================
+Welcome to Adarsh's Security Terminal v1.4.2 (Ubuntu 24.04 LTS)
+Type <span class="highlight">help</span> to display authorized commands, or <span class="highlight">matrix</span> for a visual display.
+Guest access level: <span class="security-ok">READ_ONLY [SECURE]</span>.
+===================================================
+                        </div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">guest@security-node:~$</span>
+                        <div class="input-container">
+                            <input type="text" id="terminal-input" autocomplete="off" autofocus placeholder="Type help, about, skills, projects...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostics / HUD Dashboard -->
+    <section class="cyber-section" id="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">[DIAGNOSTICS_HUD_METRICS]</span>
+                <h2 class="section-title">System Status</h2>
+            </div>
+
+            <div class="hud-grid">
+                <!-- THM Score -->
+                <a href="https://tryhackme.com/p/offAdarsh" target="_blank" rel="noopener" class="hud-card link-card" style="text-decoration: none;">
+                    <div class="hud-card-glow"></div>
+                    <div class="hud-header">
+                        <span>TRYHACKME_RANKING</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </div>
+                    <div class="hud-value">TOP <span>5%</span></div>
+                    <div class="hud-label">Global platform score, active learning Labs ❯</div>
+                </a>
+
+                <!-- CTF Team Rank -->
+                <div class="hud-card">
+                    <div class="hud-card-glow"></div>
+                    <div class="hud-header">
+                        <span>CTF_TEAM_RANK</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="hud-value">TOP <span>5</span></div>
+                    <div class="hud-label">Cyber Secure X CTF (100+ teams)</div>
+                </div>
+
+                <!-- Alert Status -->
+                <div class="hud-card safe-pulse" id="alert-card">
+                    <div class="hud-card-glow"></div>
+                    <div class="hud-header">
+                        <span>ALERT_STATUS</span>
+                        <svg class="radar-ping" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <div class="hud-value" id="threat-indicator">SECURE</div>
+                    <div class="hud-label" id="threat-details">Perimeter defense active. Zero anomalies.</div>
+                </div>
+
+                <!-- Latency / Location -->
+                <div class="hud-card">
+                    <div class="hud-card-glow"></div>
+                    <div class="hud-header">
+                        <span>SIGNAL_LATENCY</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><polyline points="12 12 16 14"/></svg>
+                    </div>
+                    <div class="hud-value" id="latency-val">24ms</div>
+                    <div class="hud-label">Node: Ghaziabad, UP, India</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section class="cyber-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">[AUTHORIZED_REPOSITORIES]</span>
+                <h2 class="section-title">Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: VulnSage -->
+                <div class="cyber-project-card" id="project-vulnsage">
+                    <div class="project-top">
+                        <span class="project-id">SECURE_CORE: VULNSAGE</span>
+                        <span class="project-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-main">
+                        <h3 class="project-title">VulnSage - Static Code Vulnerability Analyzer</h3>
+                        <p class="project-desc">
+                            A smart static analysis tool designed to find insecure coding structures in local codebases. Detects OWASP Top 10 vulnerabilities (SQL Injection, XSS, hardcoded secrets, weak input validation) by parsing abstract syntax trees.
+                        </p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>AST Parser</span>
+                            <span>Static Analysis</span>
+                            <span>OWASP 10</span>
+                        </div>
+                    </div>
+                    <div class="project-bottom">
+                        <a href="https://github.com/enm251" target="_blank" rel="noopener" class="repo-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            Repository
+                        </a>
+                        <button class="btn-scan" onclick="launchSecurityScan('vulnsage')">Execute Analysis</button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Custom Recon -->
+                <div class="cyber-project-card" id="project-recon">
+                    <div class="project-top">
+                        <span class="project-id">AUTO_RECON: CRAWLER</span>
+                        <span class="project-badge ready">DEPLOYED</span>
+                    </div>
+                    <div class="project-main">
+                        <h3 class="project-title">Reconnaissance Automation Tool</h3>
+                        <p class="project-desc">
+                            Automated active reconnaissance script designed for scanning target subnets. Maps open ports, flags vulnerabilities, and extracts service headers by coordinating multiple security tools into a clean CLI interface.
+                        </p>
+                        <div class="project-tags">
+                            <span>Bash Script</span>
+                            <span>Nmap Engine</span>
+                            <span>Target Mapping</span>
+                            <span>Automation</span>
+                        </div>
+                    </div>
+                    <div class="project-bottom">
+                        <a href="https://github.com/enm251" target="_blank" rel="noopener" class="repo-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            Repository
+                        </a>
+                        <button class="btn-scan" onclick="launchSecurityScan('recon')">Crawl Network</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="cyber-section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">[SECURE_CAPABILITIES]</span>
+                <h2 class="section-title">Skills Arsenal</h2>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Skill Category 1 -->
+                <div class="skills-card">
+                    <div class="skills-card-header">
+                        <span class="card-number">01</span>
+                        <h3>Offensive Security</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">Web App Pentesting</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill green-glow" data-percent="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">OWASP Top 10 Auditing</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill green-glow" data-percent="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">Vulnerability Identification</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill green-glow" data-percent="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2 -->
+                <div class="skills-card">
+                    <div class="skills-card-header">
+                        <span class="card-number">02</span>
+                        <h3>Defensive & Network</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">TCP/IP & Network Topologies</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill indigo-glow" data-percent="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">Packet Inspection (Wireshark)</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill indigo-glow" data-percent="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">Firewall & Access Control</span>
+                                <span class="skill-percent">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill indigo-glow" data-percent="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category 3 -->
+                <div class="skills-card">
+                    <div class="skills-card-header">
+                        <span class="card-number">03</span>
+                        <h3>Security Utilities</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">Scripting (Python, JavaScript)</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill green-glow" data-percent="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">Burp Suite / Proxy Interception</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill green-glow" data-percent="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span class="skill-name">AWS Cloud Security</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill green-glow" data-percent="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab environments -->
+            <div class="environments-badges">
+                <span class="env-tag">ACTIVE_ENVIRONMENTS</span>
+                <div class="badge-list">
+                    <span class="env-badge">TryHackMe Labs</span>
+                    <span class="env-badge">Hack The Box</span>
+                    <span class="env-badge">PortSwigger Academy</span>
+                    <span class="env-badge">Damn Vulnerable Web App</span>
+                    <span class="env-badge">Metasploitable Lab Nodes</span>
+                    <span class="env-badge">Wireshark Traffic Captures</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="cyber-section" id="journey">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">[WEB_TIMELINE_LOGS]</span>
+                <h2 class="section-title">Journey Map</h2>
+            </div>
+
+            <!-- Custom Tabs -->
+            <div class="timeline-tabs">
+                <button class="tab-btn active" data-tab="exp-tab" id="btn-tab-exp">Experience</button>
+                <button class="tab-btn" data-tab="certs-tab" id="btn-tab-certs">Certifications</button>
+                <button class="tab-btn" data-tab="edu-tab" id="btn-tab-edu">Education</button>
+            </div>
+
+            <!-- Tab Content: Experience -->
+            <div class="tab-pane active" id="exp-tab">
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-item">
+                        <div class="timeline-node">
+                            <svg viewBox="0 0 100 100" width="16" height="16" fill="currentColor"><circle cx="50" cy="50" r="40"/></svg>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="card-header-flex">
+                                <div>
+                                    <h3 class="role">Virtual Cybersecurity Intern</h3>
+                                    <div class="company">Palo Alto Networks</div>
+                                </div>
+                                <span class="date">April 2025 – May 2025</span>
+                            </div>
+                            <ul class="timeline-bullets">
+                                <li>Completed structured cyber-recon education outlining firewall systems, endpoint security, and defense protocols.</li>
+                                <li>Simulated active threat hunting operations inside virtual environments.</li>
+                                <li>Configured cloud mitigation mechanisms and identity controls.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Certifications -->
+            <div class="tab-pane" id="certs-tab">
+                <div class="certs-grid">
+                    <!-- Cert 1 -->
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <svg viewBox="0 0 100 100" width="30" height="30" fill="currentColor">
+                                <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="6"/>
+                                <path d="M50 20v60M20 50h60" stroke="currentColor" stroke-width="6"/>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>ISC2 Certified in Cybersecurity (CC)</h4>
+                            <p>Verification Code: Expected July 2026</p>
+                        </div>
+                    </div>
+                    <!-- Cert 2 -->
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <svg viewBox="0 0 100 100" width="30" height="30" fill="currentColor">
+                                <path d="M50 15L15 35l35 20 35-20zM15 50v15l35 20 35-20V50" fill="none" stroke="currentColor" stroke-width="6"/>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>TryHackMe SEC1 Practitioner</h4>
+                            <p>Verification Code: Expected August 2026</p>
+                        </div>
+                    </div>
+                    <!-- Cert 3 -->
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <svg viewBox="0 0 100 100" width="30" height="30" fill="currentColor">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="6"/>
+                                <path d="M40 50l7 7 15-15" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Cisco: Networking Essentials</h4>
+                            <p>Completed: Core Network Topology mapping</p>
+                        </div>
+                    </div>
+                    <!-- Cert 4 -->
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <svg viewBox="0 0 100 100" width="30" height="30" fill="currentColor">
+                                <path d="M25 40a15 15 0 0 1 30-5 15 15 0 0 1 25 15 10 10 0 0 1-5 18H25a10 10 0 0 1 0-28z" fill="none" stroke="currentColor" stroke-width="6"/>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>AWS Certified Cloud Practitioner</h4>
+                            <p>Covering Cloud Security, IAM Policies & Architecture</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlights-box">
+                    <span class="highlight-tag">KEY_MILESTONES</span>
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <div class="indicator-bullet"></div>
+                            <h4>TOP 5 TEAM RANKING: CYBER SECURE X CTF</h4>
+                            <p>Intercepted threats in a jeopardy-style network capture competition among 100+ team networks.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="indicator-bullet"></div>
+                            <h4>WINNER: KIET E-CELL ENDEAVOR 2024</h4>
+                            <p>Pioneered business and technical models for innovative security-oriented projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Education -->
+            <div class="tab-pane" id="edu-tab">
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-node">
+                            <svg viewBox="0 0 100 100" width="16" height="16" fill="currentColor"><circle cx="50" cy="50" r="40"/></svg>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="card-header-flex">
+                                <div>
+                                    <h3 class="role">B.Tech in Computer Science and Engineering</h3>
+                                    <div class="company">KIET Group of Institutions, Ghaziabad</div>
+                                </div>
+                                <span class="date">Oct 2023 – May 2027</span>
+                            </div>
+                            <p class="edu-desc">
+                                Active studies in Data Structures, Advanced Algorithms, Computer Networks, and Threat Assessment systems.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node">
+                            <svg viewBox="0 0 100 100" width="16" height="16" fill="currentColor"><circle cx="50" cy="50" r="40"/></svg>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="card-header-flex">
+                                <div>
+                                    <h3 class="role">Senior Secondary Education (Class XII)</h3>
+                                    <div class="company">St. Tulsi Global School</div>
+                                </div>
+                                <span class="date">Passed: 2022</span>
+                            </div>
+                            <p class="edu-desc mono">
+                                Science stream - Aggregate: 81.00%
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-node">
+                            <svg viewBox="0 0 100 100" width="16" height="16" fill="currentColor"><circle cx="50" cy="50" r="40"/></svg>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="card-header-flex">
+                                <div>
+                                    <h3 class="role">High School Education (Class X)</h3>
+                                    <div class="company">St. Tulsi Global School</div>
+                                </div>
+                                <span class="date">Passed: 2020</span>
+                            </div>
+                            <p class="edu-desc mono">
+                                Aggregate: 89.00%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="cyber-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">[SECURE_HANDSHAKE]</span>
+                <h2 class="section-title">Handshake Endpoint</h2>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Info block -->
+                <div class="contact-info">
+                    <p class="contact-prompt">
+                        Need a security audit, vulnerability assessment, or looking to recruit? Initiate a secure connection by transmitting your parameters below.
+                    </p>
+                    
+                    <div class="contact-channels">
+                        <div class="channel">
+                            <div class="channel-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-label">SENDER_MAIL</span>
+                                <a href="mailto:offadarshsingh@gmail.com" class="channel-link">offadarshsingh@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="channel">
+                            <div class="channel-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.1-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-label">SECURE_COMMS</span>
+                                <p class="channel-value">+91 93059 26259</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Networks -->
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/adarsh-singh-a22025287" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="https://github.com/enm251" target="_blank" rel="noopener" class="social-icon-btn" aria-label="GitHub">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        </a>
+                        <a href="https://tryhackme.com/p/offAdarsh" target="_blank" rel="noopener" class="social-icon-btn" aria-label="TryHackMe">
+                            <svg viewBox="0 0 100 100" width="18" height="18" fill="currentColor">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="10"/>
+                                <circle cx="50" cy="50" r="15"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Form block -->
+                <div class="contact-form-container">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="sender-name">SENDER_ID (Name)</label>
+                            <input type="text" id="sender-name" required placeholder="Identify your terminal node...">
+                        </div>
+                        <div class="form-group">
+                            <label for="sender-email">PAYLOAD_DEST (Email)</label>
+                            <input type="email" id="sender-email" required placeholder="contact@gateway.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="msg-payload">TRANSMISSION_DATA (Message)</label>
+                            <textarea id="msg-payload" rows="4" required placeholder="Input secure transmission string..."></textarea>
+                        </div>
+                        <div class="form-console-log" id="comms-log">SYSTEM_LOG: Ready for transmission...</div>
+                        <button type="submit" class="btn btn-primary" id="btn-submit-comms">Establish Handshake</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer">
+        <div class="container footer-content">
+            <div class="logo">
+                ADARSH<span>.SEC</span>
+            </div>
+            <div class="footer-status">SYSTEM STATUS: SECURE | ENCRYPTION: AES-256</div>
+            <div class="copyright">&copy; 2026 Adarsh Singh. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scanner Execution Modal -->
+    <div class="scan-modal" id="scanner-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span class="modal-title" id="scan-modal-title">SECURITY SCAN RUNNING</span>
+                <button class="modal-close" onclick="closeScannerModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cyber-terminal" style="height: 350px;">
+                    <div class="terminal-body" id="scan-terminal-body" style="background:#020509; height:100%; overflow-y:auto; font-family:'Fira Code', monospace; font-size:12px; line-height:1.5;">
+                        <!-- Scanner logs printed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
