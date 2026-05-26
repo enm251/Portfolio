@@ -126,6 +126,7 @@ const commands = {
   <span class="highlight">about</span>      - Retrieves profile biographical metadata
   <span class="highlight">skills</span>     - Dumps engineering skill levels
   <span class="highlight">projects</span>   - Shows key repositories and security tools
+  <span class="highlight">recon</span>      - Inspects RaccoonRecon orchestrator details
   <span class="highlight">aegis</span>      - Inspects Aegis Active Defense Proxy details
   <span class="highlight">certs</span>      - Outputs certifications log
   <span class="highlight">contact</span>    - Prints communication endpoints
@@ -145,8 +146,18 @@ Bio: Hands-on experience in web application security testing and OWASP Top 10 vu
     
     projects: `Repository Archives:
   - [VulnSage]: Code vulnerability analyzer to identify insecure coding patterns with extension-based implementation
-  - [AutoRecon]: Custom reconnaissance automation tool for target enumeration, port scanning, and service discovery
+  - [RaccoonRecon]: High-performance recon orchestrator coordinating an optimized 9-stage parallel funnel of 18+ tools
   - [Aegis]: Go-based Active Defense Reverse Proxy featuring JA3/JA4 TLS fingerprinting, browser spoofing detection, deception tarpits, and SSE live alerts dashboard`,
+    
+    recon: `System Core: RaccoonRecon Orchestrator
+Type: High-performance parallel reconnaissance pipeline
+Core Capabilities:
+  - Hybrid Execution Engine (optimized 9-stage funnel)
+  - Intelligent WAF Detection (throttles scan speeds dynamically)
+  - Infrastructure Discovery (Masscan + Nmap fingerprinting)
+  - Secret Validation (searches JS files and validates APIs against GitHub/Slack)
+  - Dataset Normalization (uses Uro/Anew for noise reduction)
+  - Interactive Console (real-time progress metrics dashboard)`,
     
     aegis: `System Core: Aegis Active Defense Proxy
 Type: Go-based reverse proxy & Deception WAF
@@ -204,6 +215,8 @@ if (terminalInput) {
             } else if (inputVal === 'matrix') {
                 runMatrixAnimation();
                 return;
+            } else if (inputVal === 'raccoonrecon') {
+                responseLine.innerHTML = commands.recon.replace(/\n/g, '<br>');
             } else if (commands[inputVal]) {
                 responseLine.innerHTML = commands[inputVal].replace(/\n/g, '<br>');
             } else {
@@ -289,21 +302,21 @@ const vulnSageLogs = [
     "[RESULTS] 2 high-risk issues found. Run patch script."
 ];
 
-const reconLogs = [
-    "[INFO] Starting Automated Recon Engine v2.1",
-    "[INFO] Target Gateway Scope: 192.168.1.0/24",
-    "[STATUS] Launching ICMP ping sweep...",
-    "[STATUS] Host discovered active: 192.168.1.1 (Gateway Router)",
-    "[STATUS] Host discovered active: 192.168.1.42 (Security Host)",
-    "[RUN] Running service enumeration on 192.168.1.42...",
-    "[INFO] Discovered open port: 80/tcp  (HTTP - Apache 2.4.41)",
-    "[INFO] Discovered open port: 443/tcp (HTTPS - OpenSSL 1.1.1d)",
-    "[INFO] Discovered open port: 22/tcp  (SSH - OpenSSH 8.2p1)",
-    "[RUN] Auditing HTTP response headers...",
-    "[WARN] Missing Header: X-Frame-Options",
-    "[WARN] Missing Header: Content-Security-Policy",
-    "[INFO] Target port sweep done. Writing report.",
-    "[RESULTS] Network crawler sweep completed. 3 ports open."
+const raccoonReconLogs = [
+    "[INFO] Initializing RaccoonRecon 9-Stage Orchestration Pipeline...",
+    "[STATUS] Target Scope: target-node-01.com | Speed Profile: Balanced (WAF-aware)",
+    "[STAGE 1] Launching passive subdomain discovery (Subfinder, Gau, Waybackurls)...",
+    "[INFO] Harvested 47 subdomain candidates from passive sources.",
+    "[STAGE 2] Checking active infrastructure (Masscan / Nmap fingerprints)...",
+    "[WARN] WAF DETECTED: Cloudflare active. Throttling scan concurrency...",
+    "[STAGE 3] Initiating web probing & JS file extraction (Httpx, SubJS)...",
+    "[INFO] Discovered open port: 443/tcp (HTTPS - Nginx 1.25.1)",
+    "[STAGE 4] Harvesting credentials & active API secret verification...",
+    "[WARN] SECRET VERIFIED: Exposed Slack Webhook found in main.js line 48",
+    "[STAGE 5] Deep crawling & directories fuzzer (Katana, Ffuf, Nuclei)...",
+    "[WARN] VULNERABILITY FOUND: Path Traversal (CVE-2023-XXXX) on /api/download",
+    "[INFO] Normalizing datasets and removing duplicates (Uro, Anew)...",
+    "[RESULTS] Recon pipeline complete. 1 active vulnerability & 1 exposed secret identified."
 ];
 
 const aegisLogs = [
@@ -338,9 +351,12 @@ function launchSecurityScan(projectType) {
         } else if (projectType === 'aegis') {
             logs = aegisLogs;
             title = "AEGIS ACTIVE DEFENSE SHIELD";
+        } else if (projectType === 'raccoonrecon') {
+            logs = raccoonReconLogs;
+            title = "RACCOONRECON ORCHESTRATION PIPELINE";
         } else {
-            logs = reconLogs;
-            title = "RECON AUTOMATION CRONTAB";
+            logs = [];
+            title = "UNKNOWN SCAN";
         }
         
         scanModalTitle.innerText = title;
