@@ -126,6 +126,7 @@ const commands = {
   <span class="highlight">about</span>      - Retrieves profile biographical metadata
   <span class="highlight">skills</span>     - Dumps engineering skill levels
   <span class="highlight">projects</span>   - Shows key repositories and security tools
+  <span class="highlight">aegis</span>      - Inspects Aegis Active Defense Proxy details
   <span class="highlight">certs</span>      - Outputs certifications log
   <span class="highlight">contact</span>    - Prints communication endpoints
   <span class="highlight">matrix</span>     - Run console decryption matrix streams
@@ -144,7 +145,17 @@ Bio: Hands-on experience in web application security testing and OWASP Top 10 vu
     
     projects: `Repository Archives:
   - [VulnSage]: Code vulnerability analyzer to identify insecure coding patterns with extension-based implementation
-  - [AutoRecon]: Custom reconnaissance automation tool for target enumeration, port scanning, and service discovery`,
+  - [AutoRecon]: Custom reconnaissance automation tool for target enumeration, port scanning, and service discovery
+  - [Aegis]: Go-based Active Defense Reverse Proxy featuring JA3/JA4 TLS fingerprinting, browser spoofing detection, deception tarpits, and SSE live alerts dashboard`,
+    
+    aegis: `System Core: Aegis Active Defense Proxy
+Type: Go-based reverse proxy & Deception WAF
+Core Capabilities:
+  - TLS Handshake Fingerprinting (computes raw JA3 MD5 & JA4 signatures)
+  - Browser Spoofing Heuristics (flags bots faking standard browser UAs)
+  - Deception Engine (dynamic crawl traps, fake SQL dumps, honeypot forms)
+  - TCP Tarpit (throttles connections to 1 byte/3s to exhaust scanner resources)
+  - Live Telemetry Dashboard (SSE-based dark-mode admin console)`,
     
     certs: `Credentials Database:
   - ISC2: Certified in Cybersecurity (CC) - Expected July 2026
@@ -295,6 +306,23 @@ const reconLogs = [
     "[RESULTS] Network crawler sweep completed. 3 ports open."
 ];
 
+const aegisLogs = [
+    "[INFO] Starting Aegis Active Defense Proxy Engine...",
+    "[STATUS] Binding TCP socket listener to port 443 (HTTPS)...",
+    "[STATUS] Secure reverse proxy loaded. Handshake sniffing active.",
+    "[RUN] Incoming client connection: socket 192.168.1.187:51224",
+    "[STATUS] Sniffing ClientHello record parameters...",
+    "[INFO] Raw TLS JA3 Fingerprint: 771,4865-4866-4867,11-10-35,23-24,,",
+    "[INFO] Calculated JA4 Signature: t13d1516h2_8c548a3e9c2a_792d4f23b81a",
+    "[WARN] SPOOFING DETECTED: Client user-agent claims Chrome, but JA4 fingerprint indicates automated Go/Python scanner!",
+    "[RUN] Deploying Deception countermeasures...",
+    "[WARN] HEURISTICS ALERT: Triggered crawl trap link (dynamic seed injection)",
+    "[STATUS] Activating socket-level tarpit block on 192.168.1.187...",
+    "[WARN] Socket write rate-throttled: 1 byte per 3 seconds. Bot pool stalling...",
+    "[INFO] Dispatching alert JSON packet to SSE telemetry dashboard...",
+    "[RESULTS] Active defense successful. Target connection neutralized."
+];
+
 let scanInterval = null;
 
 function launchSecurityScan(projectType) {
@@ -302,8 +330,20 @@ function launchSecurityScan(projectType) {
         scannerModal.classList.add('active');
         scanTerminalBody.innerHTML = '';
         
-        let logs = projectType === 'vulnsage' ? vulnSageLogs : reconLogs;
-        scanModalTitle.innerText = projectType === 'vulnsage' ? "VULNSAGE STATIC SCAN" : "RECON AUTOMATION CRONTAB";
+        let logs;
+        let title;
+        if (projectType === 'vulnsage') {
+            logs = vulnSageLogs;
+            title = "VULNSAGE STATIC SCAN";
+        } else if (projectType === 'aegis') {
+            logs = aegisLogs;
+            title = "AEGIS ACTIVE DEFENSE SHIELD";
+        } else {
+            logs = reconLogs;
+            title = "RECON AUTOMATION CRONTAB";
+        }
+        
+        scanModalTitle.innerText = title;
         
         let index = 0;
         if (scanInterval) clearInterval(scanInterval);
