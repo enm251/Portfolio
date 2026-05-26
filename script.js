@@ -132,23 +132,25 @@ const commands = {
   <span class="highlight">clear</span>      - Wipes buffer history`,
     
     about: `System Profile: Adarsh Singh
-Role: Security Engineer & Web Researcher
-Status: TOP 5% Ranker TryHackMe
-Bio: Specializing in web application vulnerability analysis, secure coding practices, and reconnaissance. Actively researching static scanning techniques (AST parsing) to detect vulnerabilities under OWASP Top 10 guidelines.`,
+Role: Aspiring Cybersecurity Professional
+Status: TOP 5% Ranked on TryHackMe
+Bio: Hands-on experience in web application security testing and OWASP Top 10 vulnerabilities through practical security labs and projects. Strong foundations in reconnaissance and vulnerability analysis.`,
     
     skills: `Dumping Capability Matrices:
-  - Offensive Security: Web App Pentesting (85%), OWASP Top 10 Audits (90%), Vulnerability ID (80%)
-  - Defensive Network: TCP/IP Topologies (85%), Wireshark Packet Inspection (75%)
-  - Security Utilities: Scripting Python/JS (80%), Burp Suite Interception (90%)`,
+  - Cybersecurity: Web App Security Testing, OWASP Top 10, Auth & Access Control, Input Validation & Injection Testing, API Security
+  - Networking: TCP/IP & OSI Models, HTTP/HTTPS, DNS, ARP, DHCP, Subnetting, Firewalls, Packet Analysis
+  - Security Tools: Burp Suite, Nmap, Wireshark, Metasploitable, Hashcat, Netcat
+  - Programming: Python, JavaScript, Java`,
     
     projects: `Repository Archives:
-  - [VulnSage]: Python-based Static Code Vulnerability Analyzer using Abstract Syntax Trees
-  - [AutoRecon]: Nmap-based automated subnet reconnaissance engine`,
+  - [VulnSage]: Code vulnerability analyzer to identify insecure coding patterns with extension-based implementation
+  - [AutoRecon]: Custom reconnaissance automation tool for target enumeration, port scanning, and service discovery`,
     
     certs: `Credentials Database:
   - ISC2: Certified in Cybersecurity (CC) - Expected July 2026
-  - TryHackMe: SEC1 Practitioner - Expected August 2026
-  - Cisco: Networking Essentials - Completed`,
+  - TryHackMe: Certified in SEC1 - Expected August 2026
+  - Cisco: Networking Essentials / Introduction to Cybersecurity - Completed
+  - AWS: Certified Cloud Practitioner`,
     
     contact: `Establishing Handshake Paths:
   - Email: offadarshsingh@gmail.com
