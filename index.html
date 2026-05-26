@@ -72,15 +72,11 @@
                     <div class="terminal-mode">guest@node-01</div>
                 </div>
                 <div class="terminal-body" id="terminal-body">
-                    <div class="terminal-output" id="terminal-output">
-                        <div class="welcome-text">
-===================================================
+                    <div class="terminal-output" id="terminal-output"><div class="welcome-text">===================================================
 Welcome to Adarsh's Security Terminal v1.4.2 (Ubuntu 24.04 LTS)
 Type <span class="highlight">help</span> to display authorized commands, or <span class="highlight">matrix</span> for a visual display.
 Guest access level: <span class="security-ok">READ_ONLY [SECURE]</span>.
-===================================================
-                        </div>
-                    </div>
+===================================================</div></div>
                     <div class="terminal-input-line">
                         <span class="prompt">guest@security-node:~$</span>
                         <div class="input-container">
@@ -237,6 +233,33 @@ Guest access level: <span class="security-ok">READ_ONLY [SECURE]</span>.
                             Repository
                         </a>
                         <button class="btn-scan" onclick="launchSecurityScan('aegis')">Deploy Tarpit</button>
+                    </div>
+                </div>
+
+                <!-- Project 4: InfoSec Odyssey -->
+                <div class="cyber-project-card" id="project-odyssey">
+                    <div class="project-top">
+                        <span class="project-id">SECURE_PLAY: ODYSSEY</span>
+                        <span class="project-badge live">LIVE</span>
+                    </div>
+                    <div class="project-main">
+                        <h3 class="project-title">InfoSec Odyssey - Cyber Security RPG</h3>
+                        <p class="project-desc">
+                            An interactive, browser-based RPG designed to teach cyber-hygiene. Complete missions like phishing simulations, password audits, and AI threat battles in a gamified terminal interface while earning credits to upgrade tools.
+                        </p>
+                        <div class="project-tags">
+                            <span>Vanilla JS</span>
+                            <span>Cyber-Hygiene</span>
+                            <span>Gamified Learning</span>
+                            <span>Client-Side RPG</span>
+                        </div>
+                    </div>
+                    <div class="project-bottom">
+                        <a href="https://infosec-odyssey.vercel.app/" target="_blank" rel="noopener" class="repo-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            Live Site
+                        </a>
+                        <button class="btn-scan" onclick="launchSecurityScan('odyssey')">Launch Quest</button>
                     </div>
                 </div>
             </div>

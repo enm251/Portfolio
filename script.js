@@ -77,7 +77,7 @@ initParticles();
 // Render loop
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     // Connect particles
     for (let i = 0; i < particles.length; i++) {
         particles[i].update();
@@ -128,27 +128,29 @@ const commands = {
   <span class="highlight">projects</span>   - Shows key repositories and security tools
   <span class="highlight">recon</span>      - Inspects RaccoonRecon orchestrator details
   <span class="highlight">aegis</span>      - Inspects Aegis Active Defense Proxy details
+  <span class="highlight">odyssey</span>    - Inspects InfoSec Odyssey RPG details
   <span class="highlight">certs</span>      - Outputs certifications log
   <span class="highlight">contact</span>    - Prints communication endpoints
   <span class="highlight">matrix</span>     - Run console decryption matrix streams
   <span class="highlight">clear</span>      - Wipes buffer history`,
-    
+
     about: `System Profile: Adarsh Singh
 Role: Aspiring Cybersecurity Professional
 Status: TOP 5% Ranked on TryHackMe
 Bio: Hands-on experience in web application security testing and OWASP Top 10 vulnerabilities through practical security labs and projects. Strong foundations in reconnaissance and vulnerability analysis.`,
-    
+
     skills: `Dumping Capability Matrices:
   - Cybersecurity: Web App Security Testing, OWASP Top 10, Auth & Access Control, Input Validation & Injection Testing, API Security
   - Networking: TCP/IP & OSI Models, HTTP/HTTPS, DNS, ARP, DHCP, Subnetting, Firewalls, Packet Analysis
   - Security Tools: Burp Suite, Nmap, Wireshark, Metasploitable, Hashcat, Netcat
   - Programming: Python, JavaScript, Java`,
-    
+
     projects: `Repository Archives:
   - [VulnSage]: Code vulnerability analyzer to identify insecure coding patterns with extension-based implementation
   - [RaccoonRecon]: High-performance recon orchestrator coordinating an optimized 9-stage parallel funnel of 18+ tools
-  - [Aegis]: Go-based Active Defense Reverse Proxy featuring JA3/JA4 TLS fingerprinting, browser spoofing detection, deception tarpits, and SSE live alerts dashboard`,
-    
+  - [Aegis]: Go-based Active Defense Reverse Proxy featuring JA3/JA4 TLS fingerprinting, browser spoofing detection, deception tarpits, and SSE live alerts dashboard
+  - [InfoSecOdyssey]: Browser-based RPG teaching cyber-hygiene with phishing, password cracking, and AI battles`,
+
     recon: `System Core: RaccoonRecon Orchestrator
 Type: High-performance parallel reconnaissance pipeline
 Core Capabilities:
@@ -158,7 +160,7 @@ Core Capabilities:
   - Secret Validation (searches JS files and validates APIs against GitHub/Slack)
   - Dataset Normalization (uses Uro/Anew for noise reduction)
   - Interactive Console (real-time progress metrics dashboard)`,
-    
+
     aegis: `System Core: Aegis Active Defense Proxy
 Type: Go-based reverse proxy & Deception WAF
 Core Capabilities:
@@ -167,19 +169,28 @@ Core Capabilities:
   - Deception Engine (dynamic crawl traps, fake SQL dumps, honeypot forms)
   - TCP Tarpit (throttles connections to 1 byte/3s to exhaust scanner resources)
   - Live Telemetry Dashboard (SSE-based dark-mode admin console)`,
-    
+
+    odyssey: `System Core: InfoSec Odyssey RPG
+Link: https://infosec-odyssey.vercel.app/
+Type: Interactive Browser-Based RPG
+Core Capabilities:
+  - Cyber-Hygiene Quests (simulated phishing, password audits, AI battles)
+  - Upgradeable Shop (earn credits to buy threat feeds, IDS HUDs, DNSSEC audits)
+  - Console Diagnostics (run built-in CLI commands in-game)
+  - Theme: Premium hacker dark-mode with green accents`,
+
     certs: `Credentials Database:
   - ISC2: Certified in Cybersecurity (CC) - Expected July 2026
   - TryHackMe: Certified in SEC1 - Expected August 2026
   - Cisco: Networking Essentials / Introduction to Cybersecurity - Completed
   - AWS: Certified Cloud Practitioner`,
-    
+
     contact: `Establishing Handshake Paths:
   - Email: offadarshsingh@gmail.com
   - Phone: +91 93059 26259
   - GitHub: github.com/enm251
   - LinkedIn: linkedin.com/in/adarsh-singh-a22025287`,
-    
+
     secret: `[SECRET] System log override detected. Accessing admin sandbox... Just kidding, write to the contact form to connect!`
 };
 
@@ -194,20 +205,20 @@ if (terminalInput) {
         if (e.key === 'Enter') {
             const inputVal = terminalInput.value.trim().toLowerCase();
             terminalInput.value = '';
-            
+
             if (inputVal === '') return;
-            
+
             // Append input line
             const userLine = document.createElement('div');
             userLine.className = 'terminal-input-line';
             userLine.innerHTML = `<span class="prompt">guest@security-node:~$</span> <span>${inputVal}</span>`;
             terminalOutput.appendChild(userLine);
-            
+
             // Output handler
             const responseLine = document.createElement('div');
             responseLine.style.marginTop = '6px';
             responseLine.style.marginBottom = '12px';
-            
+
             if (inputVal === 'clear') {
                 terminalOutput.innerHTML = '';
                 terminalBody.scrollTop = 0;
@@ -217,12 +228,14 @@ if (terminalInput) {
                 return;
             } else if (inputVal === 'raccoonrecon') {
                 responseLine.innerHTML = commands.recon.replace(/\n/g, '<br>');
+            } else if (inputVal === 'infosecodyssey') {
+                responseLine.innerHTML = commands.odyssey.replace(/\n/g, '<br>');
             } else if (commands[inputVal]) {
                 responseLine.innerHTML = commands[inputVal].replace(/\n/g, '<br>');
             } else {
                 responseLine.innerHTML = `<span style="color: #ef4444;">COMMAND_NOT_FOUND: ${inputVal}</span><br>Type <span class="highlight">help</span> for authorized commands.`;
             }
-            
+
             terminalOutput.appendChild(responseLine);
             terminalBody.scrollTop = terminalBody.scrollHeight;
         }
@@ -233,12 +246,12 @@ if (terminalInput) {
 let matrixInterval = null;
 function runMatrixAnimation() {
     if (matrixInterval) clearInterval(matrixInterval);
-    
+
     terminalOutput.innerHTML = '';
     const body = document.getElementById('terminal-body');
     const cols = 26;
     let ticks = 0;
-    
+
     matrixInterval = setInterval(() => {
         if (ticks < 12) {
             let row = '';
@@ -272,10 +285,10 @@ const tabPanes = document.querySelectorAll('.tab-pane');
 tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const targetTab = btn.getAttribute('data-tab');
-        
+
         tabButtons.forEach(b => b.classList.remove('active'));
         tabPanes.forEach(p => p.classList.remove('active'));
-        
+
         btn.classList.add('active');
         const activePane = document.getElementById(targetTab);
         if (activePane) activePane.classList.add('active');
@@ -336,13 +349,28 @@ const aegisLogs = [
     "[RESULTS] Active defense successful. Target connection neutralized."
 ];
 
+const odysseyLogs = [
+    "[INFO] Booting InfoSec Odyssey RPG Engine...",
+    "[STATUS] Loading user credentials profile...",
+    "[STATUS] Initializing Level 1: Cyber-Hygiene Arena...",
+    "[RUN] Simulation task: Identify phishing payload in email header...",
+    "[OK] Task Successful: Phishing indicators flagged (+50 Credits)",
+    "[RUN] Simulation task: Decrypt hash using dictionary attack...",
+    "[OK] Task Successful: Password strength audit passed (+75 Credits)",
+    "[RUN] Initializing AI Threat Arena: Defeating malicious LLM prompt injection...",
+    "[OK] Battle Won: Guardrail patch applied successfully (+100 Credits)",
+    "[STATUS] Visiting Upgrade Shop: Purchasing IDS HUD overlay...",
+    "[INFO] Telemetry updated. Total Player Score: 225 Credits.",
+    "[RESULTS] Odyssey sandbox completed successfully. Cyber-hygiene score: 100%."
+];
+
 let scanInterval = null;
 
 function launchSecurityScan(projectType) {
     if (scannerModal) {
         scannerModal.classList.add('active');
         scanTerminalBody.innerHTML = '';
-        
+
         let logs;
         let title;
         if (projectType === 'vulnsage') {
@@ -354,21 +382,24 @@ function launchSecurityScan(projectType) {
         } else if (projectType === 'raccoonrecon') {
             logs = raccoonReconLogs;
             title = "RACCOONRECON ORCHESTRATION PIPELINE";
+        } else if (projectType === 'odyssey') {
+            logs = odysseyLogs;
+            title = "INFOSEC ODYSSEY SANDBOX";
         } else {
             logs = [];
             title = "UNKNOWN SCAN";
         }
-        
+
         scanModalTitle.innerText = title;
-        
+
         let index = 0;
         if (scanInterval) clearInterval(scanInterval);
-        
+
         scanInterval = setInterval(() => {
             if (index < logs.length) {
                 const line = document.createElement('div');
                 line.style.marginBottom = '6px';
-                
+
                 // Color formatting
                 let logText = logs[index];
                 if (logText.includes('[WARN]')) {
@@ -378,7 +409,7 @@ function launchSecurityScan(projectType) {
                 } else {
                     line.style.color = '#8c9bb4';
                 }
-                
+
                 line.innerText = logText;
                 scanTerminalBody.appendChild(line);
                 scanTerminalBody.scrollTop = scanTerminalBody.scrollHeight;
@@ -405,29 +436,29 @@ const commsLog = document.getElementById('comms-log');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const name = document.getElementById('sender-name').value;
         const email = document.getElementById('sender-email').value;
         const msg = document.getElementById('msg-payload').value;
-        
+
         const btn = document.getElementById('btn-submit-comms');
         btn.disabled = true;
         btn.innerText = "Transmitting...";
-        
+
         let progress = 0;
         let progressInterval = setInterval(() => {
             progress += 25;
             commsLog.innerText = `SYSTEM_LOG: Encrypting packet payload... ${progress}%`;
-            
+
             if (progress >= 100) {
                 clearInterval(progressInterval);
                 commsLog.innerHTML = `<span style="color: #00ff66;">SYSTEM_LOG: 100% Sent. Secure connection established!</span>`;
-                
+
                 // Reset form
                 contactForm.reset();
                 btn.disabled = false;
                 btn.innerText = "Establish Handshake";
-                
+
                 // Restore state log after 4s
                 setTimeout(() => {
                     commsLog.innerText = "SYSTEM_LOG: Ready for transmission...";
@@ -441,7 +472,7 @@ if (contactForm) {
 window.addEventListener('scroll', () => {
     let scrollPos = window.scrollY + 120;
     const sections = ['about', 'dashboard', 'projects', 'skills', 'journey', 'contact'];
-    
+
     sections.forEach(secId => {
         const el = document.getElementById(secId);
         if (el) {
